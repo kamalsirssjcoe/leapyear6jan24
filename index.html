@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<title> Leap Year Finder </title>
+		<style>
+			* { font-size:40px; font-family:Century; }
+			h1 { background-color:black; color:white; width:50%; border-radius:30px;}
+			.btn { background-color:red; color:white; width:20%; border-radius:30px;}
+			.btn:hover { color:yellow; }
+			body { background-color: lightblue;}
+		</style>
+		<script>
+			function find()
+			{
+				event.preventDefault();
+				let year = document.getElementById("year");
+				let msg = document.getElementById("msg");
+				let action = document.activeElement.value;
+
+				if (year.value == "")
+				{
+					alert("u did not enter year ");
+					msg.innerHTML = "";
+					year.focus();
+					return;
+				}	
+				let y =  year.value;
+
+				if (y < 0)
+				{
+					alert("-ve year not allowed ");
+					year.value = "";
+					msg.innerHTML = "";
+					year.focus();
+					return;
+				}
+
+				if (action == "M1")
+				{
+					if (y % 4 == 0)
+						msg.innerHTML = "yes1";
+					else
+						msg.innerHTML = "no1";
+				}
+				else if (action == "M2")
+				{
+					switch(y % 4)
+					{
+						case 0 : msg.innerHTML = "yes2";	break;
+						case 1 : msg.innerHTML = "no2";		break;
+						case 2 : msg.innerHTML = "no2";		break;
+						case 3 : msg.innerHTML = "no2";		break;
+					}		
+				}
+				else if (action == "M3")
+				{
+					y % 4 == 0 ? msg.innerHTML = "yes3" : msg.innerHTML = "no3";
+				}
+			}
+		</script>	
+	</head>	
+
+	<body>
+	<center>
+		<h1> Leap Year Finder </h1>
+		<form onsubmit="find()">
+			<input type="number" id="year" placeholder="enter year" />
+			<br><br>
+			<input type="submit" value="M1" class="btn"/>
+			<input type="submit" value="M2" class="btn"/>
+			<input type="submit" value="M3" class="btn"/>
+		</form>
+			<h2 id="msg" />
+	</center>
+	</body>
+</html>
+
+
+
+
+
+
